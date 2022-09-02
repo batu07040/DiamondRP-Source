@@ -1,0 +1,35 @@
+<script>
+
+    $("#private-notification")
+        .css({
+            'opacity': 0,
+            'top': '-300px'
+        })
+        .animate({
+            'opacity': '1',
+            'top': '0px'
+        }, 500);
+
+    setTimeout(() => {
+        $("#notification-title").html(notifyTitle);
+        $("#notification-message").html(notifyMessage);
+    });
+
+    playSound(message_sound);
+</script>
+<ul id="private-notification" class="notifications">
+    <li class="notification">
+        <div class="header">
+            <div class="icon">
+                <img src="assets/apps_icons/message.svg" alt="" />
+            </div>
+            <div class="title" id="notification-title"></div>
+            <div class="age">Şimdi</div>
+        </div>
+        <div class="body">
+            <p id="notification-message">
+
+            </p>
+        </div>
+    </li>
+</ul>

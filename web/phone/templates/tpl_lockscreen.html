@@ -1,0 +1,87 @@
+<div class="status-bar">
+  <div class="bar">
+    <div class="time">20:50</div>
+    <div class="status-icons">
+      <!-- available states from 0 to 4, where 4 is full signal and 0 is no signal -->
+      <div class="icon service-icon" data-state="4">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 8">
+          <path
+            d="M12.365 0h.835a.781.781 0 0 1 .8.762v6.476a.781.781 0 0 1-.8.762h-.835a.781.781 0 0 1-.8-.762v-6.476a.781.781 0 0 1 .8-.762z"
+          />
+          <path
+            d="M8.51 1.714h.835a.781.781 0 0 1 .8.762v4.762a.781.781 0 0 1-.8.762h-.835a.782.782 0 0 1-.8-.762v-4.762a.782.782 0 0 1 .8-.762z"
+          />
+          <path
+            d="M4.655 3.614h.835a.782.782 0 0 1 .8.762v2.862a.782.782 0 0 1-.8.762h-.835a.781.781 0 0 1-.8-.762v-2.857a.781.781 0 0 1 .8-.762z"
+          />
+          <path
+            d="M.8 5.143h.835a.781.781 0 0 1 .8.762v1.333a.781.781 0 0 1-.8.762h-.835a.781.781 0 0 1-.8-.762v-1.338a.781.781 0 0 1 .8-.757z"
+          />
+        </svg>
+      </div>
+      <!-- Battery Percent values are in range from 5 to 100 with step 5 -->
+      <!-- Add class "red" for red color of battery icon -->
+      <!-- Add class "yellow" for yellow color of battery icon -->
+      <!-- Add class "charging" for green color of battry icon -->
+      <div class="icon battery-icon" data-battery-percent="100">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 9"
+          height="9"
+          width="20"
+        >
+          <g>
+            <path
+              d="M2.062.001a2.021 2 0 0 0-2.062 1.957v5.085a2.021 2 0 0 0 2.062 1.957h14.02a2.021 2 0 0 0 2.062-1.957v-5.085a2.021 2 0 0 0-2.062-1.957zm0 .783h14.02a1.212 1.2 0 0 1 1.237 1.174v5.085a1.212 1.2 0 0 1-1.237 1.174h-14.02a1.212 1.2 0 0 1-1.237-1.174v-5.085a1.212 1.2 0 0 1 1.237-1.174zM18.97 2.611a1.938 1.918 0 0 1 0 3.389z"
+            />
+          </g>
+          <rect x="1.633" y="1.565" rx=".799" height="5.87" width="14.694" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="app lockscreen">
+  <div class="container">
+    <div class="lock-status">
+      <div class="icon">
+        <img src="assets/lockscreen/lock.svg" alt="" />
+      </div>
+    </div>
+    <div class="datetime">
+      <div id="lock-screen-time" class="time">20:50</div>
+      <div id="lock-screen-date" class="date"></div>
+    </div>
+    <ul class="notifications">
+      <li class="notification">
+        <div class="header">
+          <div class="icon">
+            <img src="assets/apps_icons/message.svg" alt="" />
+          </div>
+          <div class="title">THEORDER Roleplay</div>
+          <div class="age">1 Dakika Önce</div>
+        </div>
+        <div class="body">
+          <p>Şehire hoş geldiniz.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="quick-actions">
+    <div class="button">
+      <div class="icon">
+        <img src="assets/lockscreen/quick_actions/navigation.svg" alt="" />
+      </div>
+    </div>
+    <div class="button">
+      <div class="icon">
+        <img src="assets/lockscreen/quick_actions/camera.svg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="home-button-zone">
+  <div class="home-button-wrapper">
+    <div class="home-button"></div>
+  </div>
+</div>

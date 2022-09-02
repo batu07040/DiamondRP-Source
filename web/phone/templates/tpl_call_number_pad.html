@@ -1,0 +1,175 @@
+<script>
+  //Numarayı temizle
+  number = "";
+</script>
+
+<div class="screen">
+  <div class="status-bar dark">
+    <div class="bar">
+      <div class="time">20:50</div>
+      <div class="status-icons">
+        <div class="icon service-icon" data-state="4">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 8">
+            <path
+              d="M12.365 0h.835a.781.781 0 0 1 .8.762v6.476a.781.781 0 0 1-.8.762h-.835a.781.781 0 0 1-.8-.762v-6.476a.781.781 0 0 1 .8-.762z"
+            />
+            <path
+              d="M8.51 1.714h.835a.781.781 0 0 1 .8.762v4.762a.781.781 0 0 1-.8.762h-.835a.782.782 0 0 1-.8-.762v-4.762a.782.782 0 0 1 .8-.762z"
+            />
+            <path
+              d="M4.655 3.614h.835a.782.782 0 0 1 .8.762v2.862a.782.782 0 0 1-.8.762h-.835a.781.781 0 0 1-.8-.762v-2.857a.781.781 0 0 1 .8-.762z"
+            />
+            <path
+              d="M.8 5.143h.835a.781.781 0 0 1 .8.762v1.333a.781.781 0 0 1-.8.762h-.835a.781.781 0 0 1-.8-.762v-1.338a.781.781 0 0 1 .8-.757z"
+            />
+          </svg>
+        </div>
+        <div class="icon battery-icon" data-battery-percent="100">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 9"
+            height="9"
+            width="20"
+          >
+            <g>
+              <path
+                d="M2.062.001a2.021 2 0 0 0-2.062 1.957v5.085a2.021 2 0 0 0 2.062 1.957h14.02a2.021 2 0 0 0 2.062-1.957v-5.085a2.021 2 0 0 0-2.062-1.957zm0 .783h14.02a1.212 1.2 0 0 1 1.237 1.174v5.085a1.212 1.2 0 0 1-1.237 1.174h-14.02a1.212 1.2 0 0 1-1.237-1.174v-5.085a1.212 1.2 0 0 1 1.237-1.174zM18.97 2.611a1.938 1.918 0 0 1 0 3.389z"
+              />
+            </g>
+            <rect x="1.633" y="1.565" rx=".799" height="5.87" width="14.694" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app phone">
+    <div class="container">
+      <div class="number-wrapper">
+        <span id="number"></span>
+      </div>
+      <div class="add-number">
+        <div class="title">Numarayı kaydet</div>
+      </div>
+      <div class="keypad">
+        <div class="key" onclick="inputNumber('1')">
+          <div class="digit">1</div>
+          <div class="chars"></div>
+        </div>
+        <div class="key" onclick="inputNumber('2')">
+          <div class="digit">2</div>
+          <div class="chars">ABC</div>
+        </div>
+        <div class="key" onclick="inputNumber('3')">
+          <div class="digit">3</div>
+          <div class="chars">DEF</div>
+        </div>
+        <div class="key" onclick="inputNumber('4')">
+          <div class="digit">4</div>
+          <div class="chars">GHI</div>
+        </div>
+        <div class="key" onclick="inputNumber('5')">
+          <div class="digit">5</div>
+          <div class="chars">JKL</div>
+        </div>
+        <div class="key" onclick="inputNumber('6')">
+          <div class="digit">6</div>
+          <div class="chars">MNO</div>
+        </div>
+        <div class="key" onclick="inputNumber('7')">
+          <div class="digit">7</div>
+          <div class="chars">PQRS</div>
+        </div>
+        <div class="key" onclick="inputNumber('8')">
+          <div class="digit">8</div>
+          <div class="chars">TUV</div>
+        </div>
+        <div class="key" onclick="inputNumber('9')">
+          <div class="digit">9</div>
+          <div class="chars">WXYZ</div>
+        </div>
+        <div class="key asterisk">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.967 15.131">
+              <path
+                d="M12.95 12.291l1.018-1.846-5.348-2.859 5.348-2.88-1.018-1.866-5.15 3.346.241-6.186h-2.115l.239 6.186-5.127-3.346-1.038 1.866 5.368 2.88-5.368 2.88 1.038 1.825 5.128-3.306-.239 6.146h2.114l-.241-6.126z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="key zero" onclick="inputNumber('0')">
+          <div class="digit">0</div>
+          <div class="chars">+</div>
+        </div>
+        <div class="key hashtag">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
+              <path
+                d="M5.385 3.462h4.615v-3.462h1.923v3.462h3.077v1.923h-3.077v4.615h3.077v1.923h-3.077v3.077h-1.923v-3.077h-4.615v3.077h-1.923v-3.077h-3.462v-1.923h3.462v-4.615h-3.462v-1.923h3.462v-3.462h1.923zm0 1.923v4.615h4.615v-4.615z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="key inactive"></div>
+        <div class="key call" onclick="loadContent('outcoming_call')">
+          <div class="icon">
+            <img src="assets/callscreen/phone_icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="key backspace" onclick="removeNumber()">
+          <div class="icon">
+            <img src="assets/phone/backspace.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navigation">
+      <ul class="navigation-tabs">
+        <li class="tab">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 19">
+              <path
+                d="M16.5 19a.819.819 0 0 1-.462-.141l-5.538-3.759-5.538 3.759a.828.828 0 0 1-.928 0 .729.729 0 0 1-.289-.835l2.065-6.154-5.487-3.831a.729.729 0 0 1-.285-.839.771.771 0 0 1 .749-.5h6.813l2.148-6.186a.807.807 0 0 1 1.5 0l2.152 6.192h6.814a.771.771 0 0 1 .749.5.73.73 0 0 1-.284.837l-5.488 3.828 2.065 6.154a.729.729 0 0 1-.289.835.821.821 0 0 1-.467.14"
+              />
+            </svg>
+          </div>
+          <div class="title">Favoriler</div>
+        </li>
+        <li class="tab">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19">
+              <path
+                d="M10.26 10.26v-7.22a.381.381 0 0 0-.38-.38h-.38a.381.381 0 0 0-.38.38v6.84h-4.56a.381.381 0 0 0-.38.38v.38a.381.381 0 0 0 .38.38h5.32a.381.381 0 0 0 .38-.38zm-.76-10.26a9.5 9.5 0 1 1-9.5 9.5 9.5 9.5 0 0 1 9.5-9.5z"
+              />
+            </svg>
+          </div>
+          <div class="title">Geçmiş</div>
+        </li>
+        <li class="tab">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 17">
+              <path
+                d="M9.191 16.998c.354-2.2 1.205-2.671 1.839-3.022 1.278-.707 2.612-.45 3.677-1.322a2.114 2.114 0 0 0 .71-1.63 4.965 4.965 0 0 1-2.5-.971.511.511 0 0 1-.166-.5l.59-2.583a3.183 3.183 0 0 0 .082-.721v-2.091c0-2.266.919-3.211 1.654-3.211a2.609 2.609 0 0 1 1.1.189l.549-.282a1.545 1.545 0 0 1 .388-.142c3.391-.7 3.568 3.6 3.514 5.267a3.2 3.2 0 0 0 .229 1.3l.876 2.186a.509.509 0 0 1-.18.612 6.63 6.63 0 0 1-2.776.954 2.108 2.108 0 0 0 .709 1.625c1.065.872 2.4.615 3.677 1.322.634.351 1.485.826 1.839 3.022zm-9.191 0c.378-2.2.735-3.022 1.966-3.778 1.314-.806 2.795-.45 3.933-1.322a1.823 1.823 0 0 0 .7-1.156c-.8-.788-.695-2.215-1.449-3.378v-.006a.948.948 0 0 1-.368-.749v-.756a.956.956 0 0 1 .258-.653c-.039-.669-.074-1.3-.074-1.614a3.494 3.494 0 1 1 6.985 0c0 .312-.035.945-.074 1.614a.956.956 0 0 1 .257.653v.756a.947.947 0 0 1-.367.749v.006c-.25 1.158-.5 2.579-1.451 3.367a1.825 1.825 0 0 0 .7 1.166 3 3 0 0 0 .711.4 5.67 5.67 0 0 0-1.3.513c-.987.546-2.075 1.348-2.5 3.97l-.035.216z"
+              />
+            </svg>
+          </div>
+          <div class="title">Kişiler</div>
+        </li>
+        <li class="tab active">
+          <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+              <path
+                d="M13.124 15.563a2.438 2.438 0 1 1 2.438 2.437 2.438 2.438 0 0 1-2.438-2.437zm-6.561 0a2.437 2.437 0 1 1 2.438 2.437 2.437 2.437 0 0 1-2.437-2.437zm-6.562 0a2.438 2.438 0 1 1 2.437 2.437 2.438 2.438 0 0 1-2.436-2.437zm13.124-6.563a2.438 2.438 0 1 1 2.438 2.437 2.437 2.437 0 0 1-2.438-2.437zm-6.561 0a2.437 2.437 0 1 1 2.437 2.437 2.437 2.437 0 0 1-2.436-2.437zm-6.561 0a2.438 2.438 0 1 1 2.437 2.437 2.437 2.437 0 0 1-2.437-2.437zm13.124-6.563a2.438 2.438 0 1 1 2.438 2.438 2.438 2.438 0 0 1-2.439-2.438zm-6.561 0a2.437 2.437 0 1 1 2.437 2.438 2.437 2.437 0 0 1-2.437-2.438zm-6.562 0a2.438 2.438 0 1 1 2.437 2.438 2.438 2.438 0 0 1-2.437-2.438z"
+              />
+            </svg>
+          </div>
+          <div class="title">Tuşlar</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="home-button-zone dark">
+    <div class="home-button-wrapper">
+      <div class="home-button"></div>
+    </div>
+  </div>
+</div>
