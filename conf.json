@@ -1,0 +1,11 @@
+{
+	"maxplayers": 10,
+	"name": "RAGEMP | Development https://discord.gg/dwrXd3E4",
+	"gamemode": "roleplay",
+	"stream-distance": 500.0,
+	"announce": true,
+	"csharp": "disabled",
+	"port": 22005,
+	"allow-cef-debugging": true,
+	"voice-chat": true
+}

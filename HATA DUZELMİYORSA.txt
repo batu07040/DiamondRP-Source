@@ -1,0 +1,2 @@
+npm cache tutuyor bir hata düzeltildiði halde sorun gitmiyorsa
+.cache klasörünü silin.
