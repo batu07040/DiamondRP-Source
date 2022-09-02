@@ -3,6 +3,3 @@ client_packages/game_resources/dlcpacks/
 log/
 nosql/
 client_packages/game_resources/dlcpacks.rar
-log/cpuUsage.log
-log/LoadServer.log
-log/socket.log
