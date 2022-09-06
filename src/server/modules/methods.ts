@@ -865,7 +865,7 @@ export let methods = {
 		let vehInfo = enums.vehicleInfo;
 		for (let item in vehInfo) {
 			let vItem = vehInfo[item];
-			if (vItem.hash == model || vItem.display_name == model || mp.joaat(vItem.display_name.toString().toLowerCase()) == model)
+			if (vItem.hash == hash || vItem.display_name == model || mp.joaat(vItem.display_name.toString().toLowerCase()) == model)
 				return vItem;
 		}
 		return { id: 0, hash, display_name: 'Unknown', class_name: 'Unknown', stock: 205000, fuel_full: 75, fuel_min: 8 };
