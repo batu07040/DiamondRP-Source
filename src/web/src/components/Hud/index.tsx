@@ -273,21 +273,7 @@ class Hud extends PureComponent<HudProps, HudState> {
     };
 
     CEF.hud.setWantedLevel = (level: number) => {
-      if (level > 0) {
-        $("1-star").attr("checked", "checked");
-      }
-      if (level > 2) {
-        $("2-star").attr("checked", "checked");
-      }
-      if (level > 4) {
-        $("3-star").attr("checked", "checked");
-      }
-      if (level > 6) {
-        $("4-star").attr("checked", "checked");
-      }
-      if (level > 8) {
-        $("5-star").attr("checked", "checked");
-      }
+      this.setState({ wantedLevel: level })
     };
 
     mp.events.register('cef:hud:setWantedLevel', CEF.hud.setWantedLevel.bind(this));
@@ -843,12 +829,35 @@ class Hud extends PureComponent<HudProps, HudState> {
 
           <div className="stars searcher">
             <ul className="rate-area">
+              <div className={
+                `star ${wantedLevel > 8 ? 'wanted' : ''}`
+              }>
+                ★
+              </div>
 
-              <input type="radio" id="5-star" name="rating" value="5" /><label for="5-star" title="Amazing">5 stars</label>
-              <input type="radio" id="4-star" name="rating" value="4" /><label for="4-star" title="Good">4 stars</label>
-              <input type="radio" id="3-star" name="rating" value="3" /><label for="3-star" title="Average">3 stars</label>
-              <input type="radio" id="2-star" name="rating" value="2" /><label for="2-star" title="Not Good">2 stars</label>
-              <input type="radio" id="1-star" name="rating" value="1" /><label for="1-star" title="Bad">1 star</label>
+              <div className={
+                `star ${wantedLevel > 6 ? 'wanted' : ''}`
+              }>
+                ★
+              </div>
+
+              <div className={
+                `star ${wantedLevel > 4 ? 'wanted' : ''}`
+              }>
+                ★
+              </div>
+              <div className={
+                `star ${wantedLevel > 2 ? 'wanted' : ''}`
+              }>
+                ★
+              </div>
+
+              <div className={
+                `star ${wantedLevel > 0 ? 'wanted' : ''}`
+              }>
+                ★
+              </div>
+
             </ul>
           </div>
 

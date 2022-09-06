@@ -10,6 +10,10 @@
 		height: 100vh;
 		background-size: cover;
 		overflow: hidden;
+
+
+		background-color: #000 !important;
+
 	}
 
 	* {
@@ -30,7 +34,7 @@
 		position: relative;
 	}
 
-	.nobr	{
+	.nobr {
 		white-space: nowrap;
 	}
 
@@ -183,7 +187,7 @@
 	.primary-select {
 		border-radius: 4px;
 		background: rgb(235, 241, 246) url(../images/svg/dropdown-select.svg) no-repeat center right;
-        background-size: 36px;
+		background-size: 36px;
 		opacity: 0.902;
 		box-shadow: inset 0px 0px 0px 2px rgba(220, 228, 235, 0.97);
 		line-height: .9;
@@ -192,8 +196,8 @@
 		border: 0;
 		font-size: 16px;
 		color: @dark;
-        cursor: pointer;
-        -webkit-appearance:none;
+		cursor: pointer;
+		-webkit-appearance: none;
 		.anim;
 
 		&.w100 {
@@ -456,11 +460,11 @@
 	.table-staistic {
 		padding: 24px 0;
 
-		&.bank-history > .tr {
+		&.bank-history>.tr {
 			grid-template-columns: 70px 200px 1fr 1fr auto;
-		}	
+		}
 
-		& > .tr {
+		&>.tr {
 			display: grid;
 			grid-template-columns: 70px 1fr auto;
 			grid-gap: 30px;
