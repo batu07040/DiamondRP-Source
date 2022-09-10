@@ -38,15 +38,18 @@ class Speedometer extends PureComponent<SpeedometerProps, SpeedometerState> {
       lights: false,
     };
 
+
     CEF.speedometer.setSpeed = (speed: number) => {
-      speed = speed < 0 ? 0 : speed > 400 ? 400 : speed;
+      speed = speed < 0 ? 0 : speed > 500 ? 500 : speed;
       this.setState({ speed });
     };
+
     CEF.speedometer.setFuel = (fuel: number) => {
       // fuel = fuel < 0 ? 0 : fuel > 80 ? 80 : Math.round(fuel);
       fuel = Math.ceil(fuel);
       this.setState({ fuel });
     };
+
     CEF.speedometer.setEngine = (engine: boolean) => {
       this.setState({ engine });
     };
@@ -64,16 +67,17 @@ class Speedometer extends PureComponent<SpeedometerProps, SpeedometerState> {
     };
   }
 
-  componentDidMount() {
+  componentDidMount() {/*
     this.speed = new ProgressBar.Circle(this.circle, {
       strokeWidth: 6,
       duration: -1,
       color: '#00bff3',
       svgStyle: null,
-    });
+    });*/
   }
 
   componentDidUpdate() {
+
     if (this.props.speedometer) {
       let speed = this.state.speed;
       if (speed > 80) {
@@ -92,36 +96,40 @@ class Speedometer extends PureComponent<SpeedometerProps, SpeedometerState> {
   }
 
   render() {
+
     return (
-      <div
-        className={`hud-speedometr-wrap ${this.props.speedometer ? 'on' : ''}`}
-        ref={(el) => (this.speedometer = el)}
-      >
-        <div className="hud-speedometr" style={{ opacity: this.props.showHud ? 1 : 0 }}>
-          <div id="speedometrcircle" ref={(el) => (this.circle = el)}></div>
-          <img src={speedometerImg} className="speedometr" alt="" />
-          <div className="speed-count">{Math.floor(this.state.speed)}</div>
-          {/* <div className="arrows">
-            <i className="arrow-left">
-              <img src={arrowLeft} alt="" />
-            </i>
-            <i className="arrow-right">
-              <img src={arrowRight} alt="" />
-            </i>
-          </div> */}
-          {this.state.fuel != -1 ?
-            <div className="hud-oil">
-              <img src={gasImg} alt="" />
-              <p>{this.state.fuel}L</p>
+      <div className='hud-speedometr-wrap'>
+        <div className={`speedometer-card ${this.props.speedometer ? 'on' : ''}`} style={{ opacity: this.props.showHud ? 1 : 0 }}>
+          <div className="percent">
+            <svg>
+              <circle cx="105" cy="105" r="100"></circle>
+              <circle style={{
+                "--percent": this.state.speed / 500 * 100
+              }} cx="105" cy="105" r="100" ></circle>
+            </svg>
+            <div className="number">
+              <h3>{Math.floor(this.state.speed)}<span>Km/s</span></h3>
+              <div className="hud-sensor">
+                <i className={this.state.engine ? 'engine on' : 'engine'}></i>
+                <i className={this.state.lights && this.state.engine ? 'light on' : 'light'}></i>
+                <i className={!this.state.lock ? 'doors on' : 'doors'}></i>
+              </div>
+
+
+              {this.state.fuel != -1 ?
+                <div className="hud-oil">
+                  <img src={gasImg} alt="" />
+                  <p>{this.state.fuel}L</p>
+                </div>
+                : ''}
+
             </div>
-          : ''}
-          <div className="hud-sensor">
-            <i className={this.state.engine ? 'engine on' : 'engine'}></i>
-            <i className={this.state.lights && this.state.engine ? 'light on' : 'light'}></i>
-            <i className={!this.state.lock ? 'doors on' : 'doors'}></i>
           </div>
+
         </div>
       </div>
+
+
     );
   }
 }

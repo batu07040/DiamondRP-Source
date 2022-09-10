@@ -424,6 +424,19 @@ section.hud .hud-location-wrapper .text-wrap .mic-wrap {
     border-radius: 0.3125vw;
 }
 
+.custom-wrap {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(20, 27, 31, 0.6);
+    border-radius: 0.3125vw;
+}
+
+
 section.hud .hud-location-wrapper .text-wrap .mic-wrap .icon-wrap {
     display: none;
     width: 1.25vw;
@@ -453,7 +466,7 @@ section.hud .hud-location-wrapper .text-wrap .address-wrap {
     border-radius: 0.3125vw;
     padding: 0.625vw;
     height: 2.60416667vw;
-    background: linear-gradient(90deg, rgba(20, 27, 31, 0.7), rgba(20, 27, 31, 0));
+    background: rgba(20, 27, 31, 0.7)
 }
 
 section.hud .hud-location-wrapper .text-wrap .address-wrap img {
@@ -619,6 +632,7 @@ section.hud .hud-top-right {}
     border-style: none;
     display: flex;
     gap: 5px;
+    margin: 0 !important;
 }
 
 .rate-area>.star {
@@ -633,12 +647,10 @@ section.hud .hud-top-right {}
 
 .hud-top-right {
     position: absolute;
-    top: 0px;
+    top: 10px;
     right: 0px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
     width: 100%;
-    max-width: 300px;
+    max-width: 180px;
     justify-content: right;
     font-family: "Exo", sans-serif;
 }
@@ -649,7 +661,7 @@ section.hud .hud-top-right {}
     flex-direction: column;
     width: 100%;
     justify-content: center;
-    row-gap: 8px;
+
 }
 
 .hud-top-right>.right {
@@ -2042,4 +2054,71 @@ section.hud p {
 .changemoney {
     color: red;
     font-size: 17px;
+}
+
+.speedometer-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    opacity: 0;
+}
+
+.speedometer-card .percent {
+    position: relative;
+}
+
+.speedometer-card svg {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    transform: rotate(90deg);
+}
+
+.speedometer-card svg circle {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.459);
+    stroke-width: 10;
+    stroke-linecap: round;
+    --percent: 0;
+}
+
+.speedometer-card svg circle:last-of-type {
+    stroke-dasharray: 625px;
+    stroke-dashoffset: calc(625px - (625px * var(--percent)) / 100);
+    stroke: #3498db;
+}
+
+.speedometer-card .number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+
+}
+
+.speedometer-card .number h3 {
+    font-weight: 500;
+    font-size: 3.5rem;
+}
+
+.speedometer-card .number h3 span {
+    font-size: 2rem;
+}
+
+.speedometer-card .title h2 {
+    margin: 25px 0 0;
+}
+
+.speedometer-card:nth-child(1) svg circle:last-of-type {
+    stroke: #f39c12;
+}
+
+.speedometer-card:nth-child(2) svg circle:last-of-type {
+    stroke: #2ecc71;
 }

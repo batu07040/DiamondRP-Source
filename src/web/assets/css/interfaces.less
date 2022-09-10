@@ -733,7 +733,7 @@
 	}
 
 	.hud-speedometr-wrap {
-		background: url(../images/bg-speedometr.png) no-repeat bottom right;
+
 		width: 484px;
 		height: 294px;
 		position: absolute;
@@ -741,7 +741,7 @@
 		display: flex;
 		align-items: flex-end;
 		justify-content: flex-end;
-		bottom: 0;
+		bottom: 20px;
 		padding-right: 30px;
 		padding-bottom: 30px;
 		opacity: 0;
@@ -813,176 +813,183 @@
 			}
 		}
 
-		.hud-oil {
-			display: flex;
-			align-items: center;
-			position: absolute;
-			bottom: 18%;
-			left: -3%;
 
-			img {
-				height: 11px;
-				margin-right: 10px;
-			}
 
-			i {
-				display: inline-block;
-				width: 10px;
-				height: 11px;
-				background: #fff;
-				opacity: .36;
-				margin-right: 3px;
-				.anim;
+	}
 
-				&.in {
-					opacity: 1;
-				}
-			}
+	.hud-oil {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 5px;
 
-			p {
-				font-size: 10px;
-				color: #fff;
-				font-weight: 400;
-				letter-spacing: 1px;
-				position: relative;
-				top: 1px;
+		img {
+			height: 16px;
+			margin-right: 10px;
+		}
+
+		i {
+			display: inline-block;
+			width: 10px;
+			height: 11px;
+			background: #fff;
+			opacity: .36;
+			margin-right: 3px;
+			.anim;
+
+			&.in {
+				opacity: 1;
 			}
 		}
 
-		.hud-sensor {
-			display: flex;
-			align-items: center;
-			position: absolute;
-			bottom: 0;
-			left: 4%;
+		p {
+			font-size: 10px;
+			color: #fff;
+			font-weight: 400;
+			letter-spacing: 1px;
+			position: relative;
+			top: 1px;
+			margin: 0 !important;
+		}
+	}
 
-			.engine {
-				width: 20px;
-				height: 20px;
-				position: relative;
-				margin-right: 20px;
 
-				&:after {
-					content: '';
-					position: absolute;
-					width: 100%;
-					height: 100%;
-					left: 0;
-					top: 0;
-					background: url(../images/engine-disable.svg) no-repeat;
-					background-size: 100% auto;
-					opacity: 1;
-					.anim;
-				}
+	.hud-sensor {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin: 0 auto;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-				&:before {
-					content: '';
-					position: absolute;
-					width: 100%;
-					height: 100%;
-					left: 0;
-					top: 0;
-					background: url(../images/engine-enable.svg) no-repeat;
-					background-size: 100% auto;
-					opacity: 0;
-					.anim;
-				}
+		.engine {
+			width: 20px;
+			height: 20px;
+			position: relative;
 
-				&.on {
-					&:after {
-						opacity: 0;
-					}
 
-					&:before {
-						opacity: 1;
-					}
-				}
+			&:after {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background: url(../images/engine-disable.svg) no-repeat;
+				background-size: 100% auto;
+				opacity: 1;
+				.anim;
 			}
 
-			.light {
-				width: 20px;
-				height: 20px;
-				position: relative;
-				margin-right: 20px;
-
-				&:after {
-					content: '';
-					position: absolute;
-					width: 100%;
-					height: 100%;
-					left: 0;
-					top: 0;
-					background: url(../images/light-disable.svg) no-repeat;
-					background-size: 100% auto;
-					opacity: 1;
-					.anim;
-				}
-
-				&:before {
-					content: '';
-					position: absolute;
-					width: 100%;
-					height: 100%;
-					left: 0;
-					top: 0;
-					background: url(../images/light-enable.svg) no-repeat;
-					background-size: 100% auto;
-					opacity: 0;
-					.anim;
-				}
-
-				&.on {
-					&:after {
-						opacity: 0;
-					}
-
-					&:before {
-						opacity: 1;
-					}
-				}
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background: url(../images/engine-enable.svg) no-repeat;
+				background-size: 100% auto;
+				opacity: 0;
+				.anim;
 			}
 
-			.doors {
-				width: 20px;
-				height: 20px;
-				margin-right: 20px;
-				display: inline-block;
-				position: relative;
-
+			&.on {
 				&:after {
-					content: '';
-					position: absolute;
-					width: 100%;
-					height: 100%;
-					left: 0;
-					top: 0;
-					background: url(../images/car-close.svg) no-repeat;
-					background-size: 100% auto;
-					opacity: 1;
-					.anim;
+					opacity: 0;
 				}
 
 				&:before {
-					content: '';
-					position: absolute;
-					width: 100%;
-					height: 100%;
-					left: 0;
-					top: 0;
-					background: url(../images/car-open.svg) no-repeat;
-					background-size: 100% auto;
+					opacity: 1;
+				}
+			}
+		}
+
+		.light {
+			width: 20px;
+			height: 20px;
+			position: relative;
+
+
+			&:after {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background: url(../images/light-disable.svg) no-repeat;
+				background-size: 100% auto;
+				opacity: 1;
+				.anim;
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background: url(../images/light-enable.svg) no-repeat;
+				background-size: 100% auto;
+				opacity: 0;
+				.anim;
+			}
+
+			&.on {
+				&:after {
 					opacity: 0;
-					.anim;
 				}
 
-				&.on {
-					&:after {
-						opacity: 0;
-					}
+				&:before {
+					opacity: 1;
+				}
+			}
+		}
 
-					&:before {
-						opacity: 1;
-					}
+		.doors {
+			width: 20px;
+			height: 20px;
+
+			display: inline-block;
+			position: relative;
+
+			&:after {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background: url(../images/car-close.svg) no-repeat;
+				background-size: 100% auto;
+				opacity: 1;
+				.anim;
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				background: url(../images/car-open.svg) no-repeat;
+				background-size: 100% auto;
+				opacity: 0;
+				.anim;
+			}
+
+			&.on {
+				&:after {
+					opacity: 0;
+				}
+
+				&:before {
+					opacity: 1;
 				}
 			}
 		}
