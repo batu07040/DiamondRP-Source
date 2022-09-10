@@ -274,7 +274,7 @@ export class userEntity extends Model<userEntity> {
     health: number;
     @Column({type:"INT(11)",defaultValue:100})
     water_level: number;
-    @Column({type:"INT(11)",defaultValue:1000})
+    @Column({type:"INT(11)",defaultValue:100})
     eat_level: number;
     @Column({type:"INT(11)",defaultValue:100})
     health_level: number;

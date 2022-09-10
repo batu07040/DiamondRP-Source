@@ -80,6 +80,7 @@ interface CEF {
     setInfoLinePos(left: number, bottom: number): void;
     updateHelpToggle(toggle: boolean): void;
     setWantedLevel(level: number): void;
+    setEatAndWaterLevel(eatLevel: number, waterLevel: number): void;
   };
   gui: {
     setGui(gui: string): void;

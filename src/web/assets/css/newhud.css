@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url("./bootstrap-icons.css");
 
 
@@ -15,7 +16,7 @@ section.hud .hud-advice-item.achieve-alert:after {
 }
 
 section.hud {
-    font-family: TT Commons, sans-serif;
+    font-family: "Raleway", sans-serif !important;
     color: #fff;
 }
 
@@ -236,18 +237,29 @@ section.hud .hud-money-candy span {
     font-family: Gilroy Bold, sans-serif !important;
 }
 
+
 section.hud .hud-money-wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    right: 10px;
+    top: 200px;
 }
+
 
 section.hud .hud-money-wrapper .money-wrap {
     margin-right: 0.3125vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 }
 
+section.hud .hud-money-wrapper .money-wrap>i {}
+
 section.hud .hud-money-wrapper .money-wrap .p-big {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 1.25vw;
     text-shadow: 0 0.20833333vw 5.20833333vw #22285f;
     margin-bottom: 0.3125vw;
@@ -267,7 +279,14 @@ section.hud .hud-location-wrapper {
     bottom: 0.9375vw;
     left: 320px;
     transform-origin: left bottom;
+
 }
+
+section.hud .hud-location-wrapper>.hud-eat-wrapper {
+    width: 100%;
+}
+
+
 
 section.hud .hud-location-wrapper,
 section.hud .hud-location-wrapper .hud-money-wrapper {
@@ -301,7 +320,7 @@ section.hud .hud-location-wrapper .hud-money-wrapper .hud-raised-money img {
 
 section.hud .hud-location-wrapper .text-wrap {
     position: relative;
-    /* height: 100%; */
+
 }
 
 section.hud .hud-location-wrapper .text-wrap>div:first-child {
@@ -398,8 +417,11 @@ section.hud .hud-location-wrapper .text-wrap .downline {
     display: -o-flex;
     display: flex;
     justify-content: flex-start;
+    flex-shrink: 0;
     align-items: center;
     margin-top: 0.41666667vw;
+    overflow: hidden;
+    width: 150px;
 }
 
 section.hud .hud-location-wrapper .text-wrap .downline>div:first-child {
@@ -410,7 +432,7 @@ section.hud .hud-location-wrapper .text-wrap .downline>div:last-child {
     margin-right: 0;
 }
 
-section.hud .hud-location-wrapper .text-wrap .mic-wrap {
+section.hud .hud-location-wrapper .mic-wrap {
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
@@ -418,10 +440,10 @@ section.hud .hud-location-wrapper .text-wrap .mic-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2.5vw;
-    height: 2.60416667vw;
+    width: 53px;
+    height: 53px;
     background: rgba(20, 27, 31, 0.6);
-    border-radius: 0.3125vw;
+    border-radius: 5px;
 }
 
 .custom-wrap {
@@ -439,8 +461,7 @@ section.hud .hud-location-wrapper .text-wrap .mic-wrap {
 
 section.hud .hud-location-wrapper .text-wrap .mic-wrap .icon-wrap {
     display: none;
-    width: 1.25vw;
-    height: 1.25vw;
+
 }
 
 section.hud .hud-location-wrapper .text-wrap .mic-wrap .icon-wrap img {
@@ -464,30 +485,25 @@ section.hud .hud-location-wrapper .text-wrap .address-wrap {
     justify-content: flex-start;
     align-items: center;
     border-radius: 0.3125vw;
-    padding: 0.625vw;
-    height: 2.60416667vw;
-    background: rgba(20, 27, 31, 0.7)
+    gap: 5px;
+    overflow: hidden;
 }
 
-section.hud .hud-location-wrapper .text-wrap .address-wrap img {
-    width: 1.25vw;
-    height: 1.25vw;
-    pointer-events: none;
-    user-select: none;
-    margin-right: 0.41666667vw;
+section.hud .hud-location-wrapper .text-wrap .address-wrap i {
+    font-size: 18px;
 }
 
 section.hud .hud-location-wrapper .text-wrap .address-wrap .p-big {
-    font-weight: 800;
-    font-size: 0.82916667vw;
-    margin: 0 0 0.20833333vw;
+    font-weight: 600;
+    font-size: 12px;
+
 }
 
 section.hud .hud-location-wrapper .text-wrap .address-wrap .p-descr {
     margin: 0;
     color: #f2f2f2;
     font-weight: 400;
-    font-size: 0.82916667vw;
+    font-size: 16px;
 }
 
 section.hud .value-key-location-wrap {
@@ -1873,162 +1889,6 @@ section.hud p {
 }
 
 
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-ThinItalic.eot);
-    src: local("TT Commons Thin Italic"), local("TTCommons-ThinItalic"), url(../fonts/newhud/TTCommons-ThinItalic.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-ThinItalic.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-ThinItalic.ttf) format("truetype");
-    font-weight: 100;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-Light.eot);
-    src: local("TT Commons Light"), local("TTCommons-Light"), url(../fonts/newhud/TTCommons-Light.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-Light.woff) format("woff"), url(../fonts/newhud/TTCommons-Light.ttf) format("truetype");
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-Black.eot);
-    src: local("TT Commons Black"), local("TTCommons-Black"), url(../fonts/newhud/TTCommons-Black.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-Black.woff) format("woff"), url(../fonts/newhud/TTCommons-Black.ttf) format("truetype");
-    font-weight: 900;
-    font-style: normal;
-}
-
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-Medium.eot);
-    src: local("TT Commons Medium"), local("TTCommons-Medium"), url(../fonts/newhud/TTCommons-Medium.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-Medium.woff) format("woff"), url(../fonts/newhud/TTCommons-Medium.ttf) format("truetype");
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-Italic.eot);
-    src: local("TT Commons Italic"), local("TTCommons-Italic"), url(../fonts/newhud/TTCommons-Italic.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-Italic.woff) format("woff"), url(../fonts/newhud/TTCommons-Italic.ttf) format("truetype");
-    font-weight: 400;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-Regular.eot);
-    src: local("TT Commons Regular"), local("TTCommons-Regular"), url(../fonts/newhud/TTCommons-Regular.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-Regular.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-Regular.ttf) format("truetype");
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-BlackItalic.eot);
-    src: local("TT Commons Black Italic"), local("TTCommons-BlackItalic"), url(../fonts/newhud/TTCommons-BlackItalic.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-BlackItalic.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-BlackItalic.ttf) format("truetype");
-    font-weight: 900;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-ExtraBold.eot);
-    src: local("TT Commons ExtraBold"), local("TTCommons-ExtraBold"), url(../fonts/newhud/TTCommons-ExtraBold.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-ExtraBold.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-ExtraBold.ttf) format("truetype");
-    font-weight: 800;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-BoldItalic.eot);
-    src: local("TT Commons Bold Italic"), local("TTCommons-BoldItalic"), url(../fonts/newhud/TTCommons-BoldItalic.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-BoldItalic.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-BoldItalic.ttf) format("truetype");
-    font-weight: 700;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-DemiBoldItalic.eot);
-    src: local("TT Commons DemiBold Italic"), local("TTCommons-DemiBoldItalic"), url(../fonts/newhud/TTCommons-DemiBoldItalic.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-DemiBoldItalic.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-DemiBoldItalic.ttf) format("truetype");
-    font-weight: 600;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-Bold.eot);
-    src: local("TT Commons Bold"), local("TTCommons-Bold"), url(../fonts/newhud/TTCommons-Bold.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-Bold.woff) format("woff"), url(../fonts/newhud/TTCommons-Bold.ttf) format("truetype");
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-ExtraLight.eot);
-    src: local("TT Commons ExtraLight"), local("TTCommons-ExtraLight"), url(../fonts/newhud/TTCommons-ExtraLight.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-ExtraLight.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-ExtraLight.ttf) format("truetype");
-    font-weight: 200;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-DemiBold.eot);
-    src: local("TT Commons DemiBold"), local("TTCommons-DemiBold"), url(../fonts/newhud/TTCommons-DemiBold.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-DemiBold.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-DemiBold.ttf) format("truetype");
-    font-weight: 600;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-ExtraLightItalic.eot);
-    src: local("TT Commons ExtraLight Italic"), local("TTCommons-ExtraLightItalic"), url(../fonts/newhud/TTCommons-ExtraLightItalic.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-ExtraLightItalic.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-ExtraLightItalic.ttf) format("truetype");
-    font-weight: 200;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-ExtraBoldItalic.eot);
-    src: local("TT Commons ExtraBold Italic"), local("TTCommons-ExtraBoldItalic"), url(../fonts/newhud/TTCommons-ExtraBoldItalic.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-ExtraBoldItalic.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-ExtraBoldItalic.ttf) format("truetype");
-    font-weight: 800;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-MediumItalic.eot);
-    src: local("TT Commons Medium Italic"), local("TTCommons-MediumItalic"), url(../fonts/newhud/TTCommons-MediumItalic.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-MediumItalic.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-MediumItalic.ttf) format("truetype");
-    font-weight: 500;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-LightItalic.eot);
-    src: local("TT Commons Light Italic"), local("TTCommons-LightItalic"), url(../fonts/newhud/TTCommons-LightItalic.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-LightItalic.woff) format("woff"),
-        url(../fonts/newhud/TTCommons-LightItalic.ttf) format("truetype");
-    font-weight: 300;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: TT Commons;
-    src: url(../fonts/newhud/TTCommons-Thin.eot);
-    src: local("TT Commons Thin"), local("TTCommons-Thin"), url(../fonts/newhud/TTCommons-Thin.eot?#iefix) format("embedded-opentype"), url(../fonts/newhud/TTCommons-Thin.woff) format("woff"), url(../fonts/newhud/TTCommons-Thin.ttf) format("truetype");
-    font-weight: 100;
-    font-style: normal;
-}
 
 
 
@@ -2099,7 +1959,7 @@ section.hud p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -60%);
-
+    color: #f2f2f2 !important;
 }
 
 .speedometer-card .number h3 {
@@ -2121,4 +1981,85 @@ section.hud p {
 
 .speedometer-card:nth-child(2) svg circle:last-of-type {
     stroke: #2ecc71;
+}
+
+.active {
+    background-color: #2ecc71 !important;
+    color: #000 !important;
+}
+
+
+.eat-water {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+    max-width: 200px;
+}
+
+
+.eat-water>.eat>i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999999;
+}
+
+.eat-water>.water>i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999999;
+}
+
+.eat-water>.water {
+    position: relative;
+    height: 24px;
+    background-color: #0e121588;
+    display: flex;
+    align-items: center;
+
+    border-radius: .25rem;
+    z-index: 999998;
+}
+
+.eat-water>.eat {
+    position: relative;
+    height: 24px;
+    background-color: #0e121588;
+    display: flex;
+    align-items: center;
+
+    border-radius: .25rem;
+    z-index: 999998;
+}
+
+.eat-water>.water>.water-state {
+    position: absolute;
+    background-color: #3498db;
+    width: 100% !important;
+    height: 100%;
+    border-radius: .25rem;
+}
+
+.eat-water>.eat>.eat-state {
+    position: absolute;
+    background-color: #f39c12;
+    width: 100% !important;
+    height: 100%;
+    border-radius: .25rem;
+}
+
+.chips>img {
+    margin-right: 5px;
+}
+
+.chips {
+    font-weight: 500;
+    font-size: 1.25vw;
+    display: flex;
+    align-items: center;
+
 }

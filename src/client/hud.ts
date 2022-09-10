@@ -7,7 +7,7 @@ import { testDriveMode } from './business/autosalon';
 
 var bigmap = {
   status: 0,
-  timer: <number> null
+  timer: <number>null
 };
 
 bigmap.status = 0;
@@ -20,7 +20,7 @@ mp.game.ui.setRadarBigmapEnabled(false, false);
 let gangWarPos: { x: number, y: number, z: number, d: number };
 let gangWarData: gangWarTerData[];
 let ingangWarZone = false
-mp.events.add('gangWarPos', (pos:string) => {
+mp.events.add('gangWarPos', (pos: string) => {
   gangWarPos = JSON.parse(pos);
 })
 mp.events.add('gangWarStop', () => {
@@ -33,7 +33,7 @@ mp.events.add('gangTerData', (data: string) => {
 
 
 setInterval(() => {
-  if(!user.isLogin()) return;
+  if (!user.isLogin()) return;
   if (gangWarData) {
     let fnd = false;
     gangWarData.forEach(item => {
@@ -49,7 +49,7 @@ setInterval(() => {
 
       let ins = methods.pointInBox([mp.players.local.position.x, mp.players.local.position.y], polygon)
 
-      
+
       if (ins) {
         fnd = true
         gui.browser.execute(`CEF.hud.setGangZone("${item.name}", "${fractionUtil.getFractionColor(item.ownerid)}", "${fractionUtil.getFractionName(item.ownerid)}");`);
@@ -57,20 +57,20 @@ setInterval(() => {
     })
     if (!fnd) gui.browser.execute(`CEF.hud.setGangZone(null, null, null)`);
   }
-  if (!gangWarPos){
+  if (!gangWarPos) {
     if (ingangWarZone) {
       gui.browser.execute(`CEF.hud.setGangWar(false)`);
       ingangWarZone = false;
     }
     return;
   }
-  if (methods.distanceToPos(mp.players.local.position, new mp.Vector3(gangWarPos.x, gangWarPos.y, gangWarPos.z)) < 150){
+  if (methods.distanceToPos(mp.players.local.position, new mp.Vector3(gangWarPos.x, gangWarPos.y, gangWarPos.z)) < 150) {
     if (!ingangWarZone) {
       gui.browser.execute(`CEF.hud.setGangWar(true)`);
       ingangWarZone = true;
     }
   } else {
-    if (ingangWarZone){
+    if (ingangWarZone) {
       gui.browser.execute(`CEF.hud.setGangWar(false)`);
       ingangWarZone = false;
     }
@@ -79,16 +79,16 @@ setInterval(() => {
 
 
 mp.events.add("render", () => {
-  if(mp.game.controls.isControlJustPressed(0, 48)){
+  if (mp.game.controls.isControlJustPressed(0, 48)) {
     bigmap.status++;
-    if(bigmap.status == 1){
+    if (bigmap.status == 1) {
       setTimeout(() => {
-        if(bigmap.status == 1) bigmap.status = 0;
+        if (bigmap.status == 1) bigmap.status = 0;
       }, 2000)
     }
-    if(bigmap.status == 3) bigmap.status = 0;
+    if (bigmap.status == 3) bigmap.status = 0;
 
-    if(bigmap.status >= 2){
+    if (bigmap.status >= 2) {
       toggleBigMap = true;
     } else {
       toggleBigMap = false;
@@ -96,7 +96,7 @@ mp.events.add("render", () => {
     updateSavezone();
     setHudInfoLinePos();
   }
-  if(bigmap.status == 2){
+  if (bigmap.status == 2) {
     mp.game.ui.setRadarBigmapEnabled(true, false);
     mp.game.ui.setRadarZoom(0.0);
   } else {
@@ -134,7 +134,7 @@ const GetMinimapAnchor = () => {
 
   let Minimap = {
     width: width,
-    height: yscale * (res_y / 5.674),  
+    height: yscale * (res_y / 5.674),
     left_x: left_x,
     bottom_y: bottom_y,
     right_x: left_x + width,
@@ -167,7 +167,7 @@ setInterval(updateSavezone, 3000);
 updateSavezone();
 const setHudInfoLinePos = () => {
   const { width_px, left_px, bottom_px } = saveZone;
-  if(user.isLogin())gui.browser.execute(`CEF.hud.setInfoLinePos(${left_px + width_px}, ${bottom_px})`);
+  if (user.isLogin()) gui.browser.execute(`CEF.hud.setInfoLinePos(${left_px + width_px}, ${bottom_px})`);
   setTimeout(setHudInfoLinePos, 5000);
 }
 
@@ -177,7 +177,10 @@ mp.events.add('client:hud:load', () => {
   CEF.hud.setHasBankCard(${!!(user.get('bank_prefix') > 0)});
   CEF.hud.setMoneyBank(${user.get('money_bank')});
   CEF.hud.setHasWatch(${!!user.get('item_clock')});
-  CEF.hud.updateHelpToggle(${!!mp.storage.data.help_toggle})`);
+  CEF.hud.updateHelpToggle(${!!mp.storage.data.help_toggle});
+  CEF.hud.setEatAndWaterLevel(${user.get('eat_level')},${user.get('water_level')});
+  CEF.hud.setWantedLevel(${user.get('wanted_level')});
+  `);
   setHudInfoLinePos();
 });
 
@@ -197,19 +200,19 @@ mp.events.add('renderHalf', () => {
       if (vehicle.getPedInSeat(-1) == mp.players.local.handle) {
         if (!gui.showSpeedometer) {
           gui.showSpeedometer = true;
-          if(gui.browser)gui.browser.execute(`CEF.speedometer.setSpeedometer(true)`);
+          if (gui.browser) gui.browser.execute(`CEF.speedometer.setSpeedometer(true)`);
         }
         const vehInfo = methods.getVehicleInfo(vehicle.model);
         let fuel = -1;
-        if (vehInfo.fuel_full > 1){
-          if (!testDriveMode){
+        if (vehInfo.fuel_full > 1) {
+          if (!testDriveMode) {
             fuel = methods.parseInt(vehicle.getVariable('fuel'));
-  
-            if(!lowFuelNotify){
-              if(vehicle.getIsEngineRunning()){
-                if((vehInfo.fuel_full / 20) >= fuel){
+
+            if (!lowFuelNotify) {
+              if (vehicle.getIsEngineRunning()) {
+                if ((vehInfo.fuel_full / 20) >= fuel) {
                   mp.game.ui.notifications.show('~r~Yakıtınız az, lütfen en yakın petrole gidin.');
-                } else if((vehInfo.fuel_full / 10) >= fuel){
+                } else if ((vehInfo.fuel_full / 10) >= fuel) {
                   mp.game.ui.notifications.show('~r~Yakıtınız az, lütfen en yakın petrole gidin.');
                 }
                 lowFuelNotify = true;
@@ -222,7 +225,7 @@ mp.events.add('renderHalf', () => {
 
         }
         let lightState = vehicle.getLightsState(1, 1);
-        if(gui.browser)gui.browser.execute(`CEF.speedometer.setSpeed(${methods.getCurrentSpeed()});
+        if (gui.browser) gui.browser.execute(`CEF.speedometer.setSpeed(${methods.getCurrentSpeed()});
         CEF.speedometer.setFuel(${fuel});
         CEF.speedometer.setLights(${lightState.lightsOn || lightState.highbeamsOn});
         CEF.speedometer.setEngine(${vehicle.getIsEngineRunning() ? 'true' : 'false'});
@@ -230,7 +233,7 @@ mp.events.add('renderHalf', () => {
       }
     } else if (gui.showSpeedometer) {
       gui.showSpeedometer = false;
-      if(gui.browser)gui.browser.execute(`CEF.speedometer.setSpeedometer(false)`);
+      if (gui.browser) gui.browser.execute(`CEF.speedometer.setSpeedometer(false)`);
     }
   }
 });

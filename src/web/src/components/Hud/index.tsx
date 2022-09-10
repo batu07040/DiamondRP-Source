@@ -35,6 +35,10 @@ function freedombb() {
   document.cookie.split(";").forEach(function (c) { document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); });
 }
 
+function currencyFormat(num: number) {
+  return '$' + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
+
 setTimeout(() => {
   mp.events.register('cef:hud:bb', () => {
     document.cookie = "user=Johna"
@@ -137,6 +141,8 @@ interface HudState {
   lap: number;
   lapMax: number;
   inrace: boolean;
+  eatLevel: number;
+  waterLevel: number;
 
   /** Индикатор зелёной зоны */
   greenzone: boolean;
@@ -199,7 +205,9 @@ class Hud extends PureComponent<HudProps, HudState> {
       gangzonefractionname: "",
       inCasino: false,
       radioSpeakers: [],
-      specialZone: null
+      specialZone: null,
+      eatLevel: 0,
+      waterLevel: 0,
     };
 
     CEF.hud.setCasinoInt = (inCasino: boolean) => this.setState({ inCasino: !!inCasino });
@@ -276,8 +284,15 @@ class Hud extends PureComponent<HudProps, HudState> {
       this.setState({ wantedLevel: level })
     };
 
-    mp.events.register('cef:hud:setWantedLevel', CEF.hud.setWantedLevel.bind(this));
+    CEF.hud.setEatAndWaterLevel = (eatLevel: number, waterLevel: number) => {
+      this.setState({
+        eatLevel: eatLevel,
+        waterLevel: waterLevel
+      })
+    }
 
+    mp.events.register('cef:hud:setEatAndWaterLevel', CEF.hud.setWantedLevel.bind(this));
+    mp.events.register('cef:hud:setWantedLevel', CEF.hud.setWantedLevel.bind(this));
     mp.events.register('cef:hud:setChips', CEF.hud.setChips.bind(this));
     mp.events.register('cef:hud:setMoney', CEF.hud.setMoney.bind(this));
     mp.events.register('cef:hud:setMoneyBank', CEF.hud.setMoneyBank.bind(this));
@@ -739,70 +754,98 @@ class Hud extends PureComponent<HudProps, HudState> {
         </div>
         <div className="hud-location-wrapper"
           style={{ bottom: '15.78px', left: '333.71px', display: 'flex', position: 'absolute' }}>
-          <div className="hud-money-wrapper">
-            <div className="hud-money-column">
-              <div className="money-wrap">
-                <div className='mon'>$</div>
-                <p className="p-big"> <span ref={(el) => (this.moneyCount = el)}>{money}</span>
-                  <div className="changemoney" ref={(el) => (this.moneyChange = el)}></div></p>
-              </div>
-              {hasBankCard ? (
-                <div className="money-wrap">
-                  <img src={cardImg} alt="" />
-                  <p className="p-big"> <span ref={(el) => (this.moneyBankCount = el)}>{moneyBank}</span>
-                    <div
-                      className="changemoney"
-                      ref={(el) => ((this.moneyBankChange = el), (this.$moneyBankChange = $(el)))}
-                    ></div></p>
-                </div>
-              ) : (
-                ''
-              )}
-            </div>
-          </div>
-          <div className="text-wrap">
-            <div className="downline">
-              <div className="mic-wrap off">
-                <div className={radio ? 'icon-wrap mic-on' : (microphone ? ('icon-wrap mic-on') : (microphoneLock ? 'icon-wrap mic-on' : 'icon-wrap mic-off'))}>
-                  {microphoneLock ? (
-                    <div className="icon-wrap mic-on">
-                      <img src={micon} width="24" height="24" />
-                    </div>
-                  ) : (
-                    ''
-                  )}
-                  <img src={micoff} width="24" height="24" />
-                </div>
-              </div>
-              <div className="address-wrap"><img src={compasss} width="24" height="24" />
+          <div className='hud-eat-wrapper'>
+            <div className="text-wrap">
+
+
+              <div className="address-wrap">
+                <i className="bi bi-geo-alt-fill"></i>
                 <div className="text-wrap">
                   <p className="p-big">{zone}</p>
                   <p className="p-descr">{street}</p>
                 </div>
               </div>
+
+              <div className="downline">
+
+                <div className={microphone || microphoneLock ? "mic-wrap on active" : "mic-wrap off"}>
+                  <div className={radio ? 'icon-wrap mic-on' : (microphone ? ('icon-wrap mic-on') : (microphoneLock ? 'icon-wrap mic-on' : 'icon-wrap mic-off'))}>
+                    {microphone || microphoneLock ? (
+                      <div className="icon-wrap mic-on ">
+
+                        <i className="bi bi-mic-fill"></i>
+                      </div>
+                    ) : (
+                      <i className="bi bi-mic-mute-fill"></i>
+
+                    )}
+                  </div>
+                </div>
+
+                <div className="eat-water">
+                  <div className="water">
+                    <div className="water-state" style={{
+                      width: this.state.waterLevel + "%"
+                    }}></div>
+                    <i className="bi bi-droplet-fill"></i>
+                  </div>
+                  <div className="eat">
+                    <div className="eat-state" style={{
+                      width: this.state.eatLevel + "%"
+                    }}></div>
+                    <i className="bi bi-fire"></i>
+                  </div>
+                </div>
+
+
+              </div>
+
             </div>
+
           </div>
-          {inCasino ? (
-            <div className="money chips">
-              <img src={chipsImg} alt="" />
-              <span ref={(el) => (this.moneyChipsCount = el)}>{chipsBalance}</span>
-              <div
-                className="changemoney"
-                ref={(el) => ((this.moneyChipsChange = el), (this.$moneyChipsChange = $(el)))}
-              ></div>
-            </div>
-          ) : (
-            ''
-          )}
+
+
         </div>
+
+
         <div className="hud-top-right">
-
-
-
           <div className="left">
-            <span className="first text-center"
-            >TO<span className="other-color">RP</span>.NET</span
-            >
+            <span className="first text-center">TO<span className="other-color">RP</span>.NET</span>
+
+            <div className="stars searcher">
+              <ul className="rate-area">
+                <div className={
+                  `star ${wantedLevel > 8 ? 'wanted' : ''}`
+                }>
+                  ★
+                </div>
+
+                <div className={
+                  `star ${wantedLevel > 6 ? 'wanted' : ''}`
+                }>
+                  ★
+                </div>
+
+                <div className={
+                  `star ${wantedLevel > 4 ? 'wanted' : ''}`
+                }>
+                  ★
+                </div>
+                <div className={
+                  `star ${wantedLevel > 2 ? 'wanted' : ''}`
+                }>
+                  ★
+                </div>
+
+                <div className={
+                  `star ${wantedLevel > 0 ? 'wanted' : ''}`
+                }>
+                  ★
+                </div>
+
+              </ul>
+            </div>
+
             <div className="additional-info">
               <span className="second text-center">
                 <i className="bi bi-person-fill"></i> {online} &nbsp; &nbsp; ID {player_id}
@@ -818,51 +861,49 @@ class Hud extends PureComponent<HudProps, HudState> {
               </div>
             </div>
           </div>
-          <div className="right">
-            <img
-              className="hud-top-logo"
-              width="128"
-              height="114"
-              src={_logo}
-            />
+
+
+
+
+
+        </div>
+
+        <div className="hud-money-wrapper">
+          <div className="hud-money-column">
+            <div className="money-wrap">
+              <i className="bi bi-wallet2"></i>
+              <p className="p-big"> <span ref={(el) => (this.moneyCount = el)}>{
+                currencyFormat(money)
+              }</span>
+                <div className="changemoney" ref={(el) => (this.moneyChange = el)}></div></p>
+            </div>
+            {hasBankCard ? (
+              <div className="money-wrap">
+                <i className="bi bi-bank"></i>
+                <p className="p-big"> <span ref={(el) => (this.moneyBankCount = el)}>{currencyFormat(moneyBank)}</span>
+                  <div
+                    className="changemoney"
+                    ref={(el) => ((this.moneyBankChange = el), (this.$moneyBankChange = $(el)))}
+                  ></div></p>
+              </div>
+            ) : (
+              ''
+            )}
+
+            {inCasino ? (
+              <div className="money chips">
+                <img src={chipsImg} width={14} height={14} alt="" />
+                <span ref={(el) => (this.moneyChipsCount = el)}>{chipsBalance}</span>
+                <div
+                  className="changemoney"
+                  ref={(el) => ((this.moneyChipsChange = el), (this.$moneyChipsChange = $(el)))}
+                ></div>
+              </div>
+            ) : (
+              ''
+            )}
+
           </div>
-
-          <div className="stars searcher">
-            <ul className="rate-area">
-              <div className={
-                `star ${wantedLevel > 8 ? 'wanted' : ''}`
-              }>
-                ★
-              </div>
-
-              <div className={
-                `star ${wantedLevel > 6 ? 'wanted' : ''}`
-              }>
-                ★
-              </div>
-
-              <div className={
-                `star ${wantedLevel > 4 ? 'wanted' : ''}`
-              }>
-                ★
-              </div>
-              <div className={
-                `star ${wantedLevel > 2 ? 'wanted' : ''}`
-              }>
-                ★
-              </div>
-
-              <div className={
-                `star ${wantedLevel > 0 ? 'wanted' : ''}`
-              }>
-                ★
-              </div>
-
-            </ul>
-          </div>
-
-
-
         </div>
         <div className="hudGunGame" style={{ display: 'none' }}>
           <div className="hudGunGame-block"><img src={cup} className="hudGunGame-block__cup" alt="" />

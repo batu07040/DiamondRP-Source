@@ -83,7 +83,6 @@ class Speedometer extends PureComponent<SpeedometerProps, SpeedometerState> {
       if (speed > 80) {
         speed = 80 + ((this.state.speed - 80) / 2);
       }
-      this.speed.animate(speed * 0.00283);
     } else {
       this.setState({
         speed: 0,
@@ -98,7 +97,7 @@ class Speedometer extends PureComponent<SpeedometerProps, SpeedometerState> {
   render() {
 
     return (
-      <div className='hud-speedometr-wrap'>
+      <div className={`hud-speedometr-wrap speedometer-card ${this.props.speedometer ? 'on' : ''}`}>
         <div className={`speedometer-card ${this.props.speedometer ? 'on' : ''}`} style={{ opacity: this.props.showHud ? 1 : 0 }}>
           <div className="percent">
             <svg>

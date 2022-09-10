@@ -1994,8 +1994,8 @@ export let user = {
         usr.jailed = user.get(playerid, 'jailed');
         usr.jail_time = user.get(playerid, 'jail_time');
         usr.med_time = user.get(playerid, 'med_time');
-        // usr.eat_level = user.get(playerid, 'eat_level');
-        // usr.water_level = user.get(playerid, 'water_level');
+        usr.eat_level = user.get(playerid, 'eat_level');
+        usr.water_level = user.get(playerid, 'water_level');
         // usr.health_level = user.get(playerid, 'health_level');
         // usr.temp_level = user.get(playerid, 'temp_level');
         // usr.sick_cold = user.get(playerid, 'sick_cold');
@@ -4409,7 +4409,7 @@ export let user = {
   addWaterLevel: function (player: PlayerMp, level: number) {
     //methods.debug('user.addWaterLevel');
     if (level > 100) {
-      user.setWaterLevel(player, 110);
+      user.setWaterLevel(player, 100);
       return true;
     }
     if (user.getWaterLevel(player) + level > 100) {
@@ -5621,7 +5621,7 @@ mp.events.add('playerQuit', (player: PlayerMp, exitType: "disconnect" | "timeout
   const id = user.getId(player);
   if (!id || id == -1) return;
   dropBag(player)
-  user.log(id, "PlayerLeave", "sunucuyu terk et, cıkıs turu: " + exitType + ", neden: " + reason)
+  user.log(id, "PlayerLeave", "Oyuncu oturumu kapattı. Çıkış Türü: " + exitType + ", Neden: " + reason)
   userEntity.update({ is_online: 0 }, { where: { id } })
 });
 
@@ -5638,7 +5638,7 @@ mp.events.add('playerDeath', (player: PlayerMp, reason: number, killer: PlayerMp
 
   if (killer) {
     if (user.isGos(player) && !user.isGos(killer)) {
-      user.giveWanted(killer, 1, 'Bir devlet calısanının oldurulmesi');
+      user.giveWanted(killer, 1, 'Bir devlet çalışanını öldürdü.');
     }
   }
 
@@ -5713,9 +5713,13 @@ setInterval(() => {
     if (!user.isAfk(player)) {
       onlineUser.set(user.getId(player), onlineUser.get(user.getId(player)) + 2)
       player.call("played:time", [onlineUser.get(user.getId(player)), player.played_time])
+      user.removeWaterLevel(player, 1);
+      user.removeEatLevel(player, 1);
+      mp.events.triggerBrowser(player, 'cef:hud:setEatAndWaterLevel', user.getEatLevel(player), user.getWaterLevel(player));
     }
   })
 }, 120000)
+
 
 
 let playerDataSQL = new NoSQLbase<{ id: number; played_time_day: number }>('playerData');

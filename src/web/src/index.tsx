@@ -67,6 +67,8 @@ window.API = API;
 import App from './components/App';
 import './components/style';
 import HelpMenu from 'components/HelpMenu';
+import Hud from 'components/Hud';
+import Speedometer from 'components/Speedometer';
 /*
 import Hud from 'components/Hud';
 import Auth from 'components/Login/Auth';
