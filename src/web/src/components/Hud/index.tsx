@@ -331,6 +331,7 @@ class Hud extends PureComponent<HudProps, HudState> {
     CEF.hud.setMicrophone = (microphone: boolean) => {
       this.setState({ microphone });
     };
+
     CEF.hud.setRadio = (radio: boolean) => {
       this.setState({ radio });
     };
@@ -815,30 +816,30 @@ class Hud extends PureComponent<HudProps, HudState> {
             <div className="stars searcher">
               <ul className="rate-area">
                 <div className={
-                  `star ${wantedLevel > 8 ? 'wanted' : ''}`
+                  `star ${this.state.wantedLevel > 8 ? 'wanted' : ''}`
                 }>
                   ★
                 </div>
 
                 <div className={
-                  `star ${wantedLevel > 6 ? 'wanted' : ''}`
+                  `star ${this.state.wantedLevel > 6 ? 'wanted' : ''}`
                 }>
                   ★
                 </div>
 
                 <div className={
-                  `star ${wantedLevel > 4 ? 'wanted' : ''}`
+                  `star ${this.state.wantedLevel > 4 ? 'wanted' : ''}`
                 }>
                   ★
                 </div>
                 <div className={
-                  `star ${wantedLevel > 2 ? 'wanted' : ''}`
+                  `star ${this.state.wantedLevel > 2 ? 'wanted' : ''}`
                 }>
                   ★
                 </div>
 
                 <div className={
-                  `star ${wantedLevel > 0 ? 'wanted' : ''}`
+                  `star ${this.state.wantedLevel > 0 ? 'wanted' : ''}`
                 }>
                   ★
                 </div>
@@ -874,13 +875,13 @@ class Hud extends PureComponent<HudProps, HudState> {
               <i className="bi bi-wallet2"></i>
               <p className="p-big"> <span ref={(el) => (this.moneyCount = el)}>{
                 currencyFormat(money)
-              }</span>
+              }$</span>
                 <div className="changemoney" ref={(el) => (this.moneyChange = el)}></div></p>
             </div>
             {hasBankCard ? (
               <div className="money-wrap">
                 <i className="bi bi-bank"></i>
-                <p className="p-big"> <span ref={(el) => (this.moneyBankCount = el)}>{currencyFormat(moneyBank)}</span>
+                <p className="p-big"> <span ref={(el) => (this.moneyBankCount = el)}>{currencyFormat(moneyBank)}$</span>
                   <div
                     className="changemoney"
                     ref={(el) => ((this.moneyBankChange = el), (this.$moneyBankChange = $(el)))}
