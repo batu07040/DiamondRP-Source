@@ -278,7 +278,7 @@ async function init() {
     rent.loadAll();
     gun.loadAll();
     bar.loadAll();
-    carWash.loadAll();
+    //carWash.loadAll();
     autosalon.loadAll();
 
     loadAuction();
