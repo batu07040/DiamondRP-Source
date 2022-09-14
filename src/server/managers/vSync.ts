@@ -182,7 +182,7 @@ let vSync = {
             return;
         mp.players.callInRange(v.position, streamDist, "vSync:stopSound", [v.id, pref]);
     },
-    setVehicleDirt: function(v:VehicleMp, dirt:number) {
+/*    setVehicleDirt: function(v:VehicleMp, dirt:number) {
         if (!vehicles.exists(v))
             return;
         let data = vSync.getVehicleSyncData(v);
@@ -192,7 +192,7 @@ let vSync = {
     },
     getVehicleDirt: function(v:VehicleMp) {
         return vSync.getVehicleSyncData(v).Dirt;
-    },
+    },*/
     setVehicleDoorState: function(v:VehicleMp, door:number, state:number) {
         if (!vehicles.exists(v))
             return;

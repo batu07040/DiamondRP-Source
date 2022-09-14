@@ -464,8 +464,9 @@ mp.events.add('vSync:setVehicleWheelStatus', (vehId, wheel, state) => {
   }
 });
 
+/*
 mp.events.add('vSync:setVehicleDirt', (vehId, dirt) => {
-  
+    
   try {
     let veh = mp.vehicles.atRemoteId(vehId);
     if (veh !== undefined && mp.vehicles.exists(veh)) {
@@ -474,7 +475,7 @@ mp.events.add('vSync:setVehicleDirt', (vehId, dirt) => {
   } catch (e) {
     methods.debug(e);
   }
-});
+});*/
 
 mp.events.add('vSync:setVehicleDoorState', (vehId, door, state) => {
   
