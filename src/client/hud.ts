@@ -178,7 +178,8 @@ mp.events.add('client:hud:load', () => {
   CEF.hud.setMoneyBank(${user.get('money_bank')});
   CEF.hud.setHasWatch(${!!user.get('item_clock')});
   CEF.hud.updateHelpToggle(${!!mp.storage.data.help_toggle});
-  CEF.hud.setEatAndWaterLevel(${user.get('eat_level')},${user.get('water_level')});
+  CEF.hud.setEatLevel(${user.get('eat_level')});
+  CEF.hud.setWaterLevel(${user.get('water_level')});
   CEF.hud.setWantedLevel(${user.get('wanted_level')});
   `);
   setHudInfoLinePos();
