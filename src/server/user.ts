@@ -4340,6 +4340,7 @@ export let user = {
 
   setEatLevel: function (player: PlayerMp, level: number) {
     user.set(player, 'eat_level', level);
+    mp.events.triggerBrowser(player, 'cef:hud:setEatLevel', level);
     return true;
   },
 
@@ -4431,6 +4432,7 @@ export let user = {
 
   setWaterLevel: function (player: PlayerMp, level: number) {
     user.set(player, 'water_level', level);
+    mp.events.triggerBrowser(player, 'cef:hud:setWaterLevel', level);
     return true;
   },
 
@@ -5715,11 +5717,10 @@ setInterval(() => {
       player.call("played:time", [onlineUser.get(user.getId(player)), player.played_time])
       user.removeWaterLevel(player, 1);
       user.removeEatLevel(player, 1);
-      mp.events.triggerBrowser(player, 'cef:hud:setEatAndWaterLevel', user.getEatLevel(player), user.getWaterLevel(player));
+
     }
   })
 }, 120000)
-
 
 
 let playerDataSQL = new NoSQLbase<{ id: number; played_time_day: number }>('playerData');

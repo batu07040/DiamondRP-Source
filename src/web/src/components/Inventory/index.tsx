@@ -626,6 +626,7 @@ export default class Inventory extends Component<{ test?: boolean }, InventoryMa
     return <>
       <div className="inv-item" data-tip="React-tooltip" data-for={`happyFace_${item.id}_${item.item_id}_${owner_type}_${owner_id}`}>
         <img src={iconsItems[item.item_id]} alt="" />
+        <span className="inv-name">{getItemName(item)}</span>
         <span className="inv-size">{owner_type == -1 ? item.count : item.amount}</span>
       </div>
       <ReactTooltip id={`happyFace_${item.id}_${item.item_id}_${owner_type}_${owner_id}`} place="top" type="dark" effect="solid" data-delay-show="100">
@@ -972,12 +973,12 @@ export default class Inventory extends Component<{ test?: boolean }, InventoryMa
             let value: any = (document.getElementById(`keylock_${owner_type}_${owner_id}`));
             value = value.value;
             mp.events.triggerServer("player:unlock", owner_type, owner_id, value)
-          }}>Открыть</a></> : ""}
+          }}>Aç</a></> : ""}
           {this.inventoryBlockDataChildren(name, desc, weight, weight_max, owner_type, owner_id, items, closed)}
           {!closed && weight_max > 0 ? (
             <div className="weight-wrap weight-wrap-block">
               <p>
-                Вес {(weight / 1000).toFixed(1)} / {(weight_max / 1000).toFixed(1)} кг
+                Kapasite {(weight / 1000).toFixed(1)} / {(weight_max / 1000).toFixed(1)} KG
               </p>
               <i>
                 <span
@@ -1092,7 +1093,7 @@ export default class Inventory extends Component<{ test?: boolean }, InventoryMa
                       {!this.state.equip.hat ? <div className={`inv-item`} /> : ''}
                     </div>,
                     269,
-                    this.state.equip.hat, "Sapka"
+                    this.state.equip.hat, "Şapka"
                   )}
                   {this.equipItemRender(
                     <div className="inv-item-wrap">
@@ -1105,7 +1106,7 @@ export default class Inventory extends Component<{ test?: boolean }, InventoryMa
                       {!this.state.equip.ear ? <div className={`inv-item`} /> : ''}
                     </div>,
                     271,
-                    this.state.equip.ear, "Kulak"
+                    this.state.equip.ear, "Küpe"
                   )}
                 </div>
                 <div className="inv-line-2">
@@ -1147,7 +1148,7 @@ export default class Inventory extends Component<{ test?: boolean }, InventoryMa
                         {!this.state.equip.bracelet ? <div className={`inv-item`} /> : ''}
                       </div>,
                       273,
-                      this.state.equip.bracelet, "Bilezik"
+                      this.state.equip.bracelet, "Bileklik"
                     )}
                   </div>
                 </div>
@@ -1163,7 +1164,7 @@ export default class Inventory extends Component<{ test?: boolean }, InventoryMa
                       {!this.state.equip.leg ? <div className={`inv-item`} /> : ''}
                     </div>,
                     266,
-                    this.state.equip.leg, "Ayak"
+                    this.state.equip.leg, "Pantolon"
                   )}
                   <div className="items-2">
                     {this.equipItemRender(
@@ -1206,7 +1207,7 @@ export default class Inventory extends Component<{ test?: boolean }, InventoryMa
                       {!this.state.equip.foot ? <div className={`inv-item`} /> : ''}
                     </div>,
                     267,
-                    this.state.equip.foot, "Ayakkabi"
+                    this.state.equip.foot, "Ayakkabı"
                   )}
                 </div>
                 <br />
@@ -1271,23 +1272,19 @@ export default class Inventory extends Component<{ test?: boolean }, InventoryMa
             </DropTarget>
           </div>
           <div className="inventory-my">
-            <div
-              className={`darkbox-inv mb10`}
-            >
-              <p className="inventory-item-name">Yonet</p>
-              <p className="inventory-item-desc" onClick={() => { this.closeInventory() }}>I - Envanterden Cik</p>
-              <p className="inventory-item-desc">SHIFT - Esyalari Surukleyin</p>
-
-            </div>
-            {this.inventoryBlockData('Оружие', '', 0, 0, -1, -1, this.state.weapons, false)}
             {this.inventoryBlock(this.state.blocks[0])}
+            {this.inventoryBlockData('Silahlar', '', 0, 0, -1, -1, this.state.weapons, false)}
           </div>
+
+
           <div className="inventory-other">
             {this.state.blocks.map((block, index) => {
               if (block.owner_type == 1 && block.owner_id == this.state.myid) return '';
               return this.inventoryBlock(block);
             })}
           </div>
+
+
         </div>
         <DropTarget targetKey={'drag' + this.keyDrag} id={`ground`}><div className="inventory-ground" id={`ground`}></div></DropTarget>
 

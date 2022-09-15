@@ -284,14 +284,22 @@ class Hud extends PureComponent<HudProps, HudState> {
       this.setState({ wantedLevel: level })
     };
 
-    CEF.hud.setEatAndWaterLevel = (eatLevel: number, waterLevel: number) => {
+    CEF.hud.setEatLevel = (level: number) => {
       this.setState({
-        eatLevel: eatLevel,
-        waterLevel: waterLevel
+        eatLevel: level,
+
+      })
+    };
+
+    CEF.hud.setWaterLevel = (level: number) => {
+      this.setState({
+        waterLevel: level,
       })
     }
 
-    mp.events.register('cef:hud:setEatAndWaterLevel', CEF.hud.setWantedLevel.bind(this));
+    mp.events.register('cef:hud:setEatLevel', CEF.hud.setEatLevel.bind(this));
+    mp.events.register('cef:hud:setWaterLevel', CEF.hud.setWaterLevel.bind(this));
+    mp.events.register('cef:hud:setWantedLevel', CEF.hud.setWantedLevel.bind(this));
     mp.events.register('cef:hud:setWantedLevel', CEF.hud.setWantedLevel.bind(this));
     mp.events.register('cef:hud:setChips', CEF.hud.setChips.bind(this));
     mp.events.register('cef:hud:setMoney', CEF.hud.setMoney.bind(this));
